@@ -6,7 +6,16 @@ class Path
 {
 	public $currentPath;
 
-	function __construct($path)
+	/**
+	*
+	* A path change directory simulator, to construct enter blank or some path starting with /
+	*
+	* @param    string $string The string to change directory
+	* @author   gdarcan
+	* @return   boolean
+	*
+	*/
+	function __construct($path="")
 	{
 		$path = $path == "" ? "/" : $path;
 		if (substr($path,0,1)!='/') {
@@ -32,6 +41,15 @@ class Path
 		}
 	}
 
+	/**
+	*
+	* A path change directory simulator
+	*
+	* @param    string $string The string to change directory
+	* @author   gdarcan
+	* @return   boolean
+	*
+	*/
 	public function cd($newPath=null)
 	{
 		if (!$newPath) {
@@ -82,5 +100,5 @@ class Path
 }
 
 $path = new Path('/a/b/c/d');
-$path->cd();
-//echo $path->currentPath;
+$path->cd('../x');
+echo $path->currentPath;

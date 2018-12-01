@@ -2,6 +2,15 @@
 
 class FileOwners
 {
+	/**
+	*
+	* A function for grouping files by owners
+	*
+	* @param    object array $files = ["Input.txt" => "Randy", "Code.py" => "Stan"]
+	* @author   gdarcan
+	* @return   object array
+	*
+	*/
 	public function groupByOwners($files)
 	{
 		$owners = array();

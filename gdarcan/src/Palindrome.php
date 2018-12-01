@@ -9,7 +9,8 @@ class Palindrome
 	* Eg: deleveled
 	*
 	* @param    string $string The string to check
-	* @return      boolean
+	* @author   gdarcan
+	* @return   boolean
 	*
 	*/
 	public function isPalindrome($word)
@@ -20,11 +21,11 @@ class Palindrome
 	/**
 	*
 	* There's a php function named strrev to reverse strings
-	/* but no built-in multi byte string reversing function
-	/* in widely used php-mbstring extension
+	* but no built-in multi byte string reversing function
+	* in widely used php-mbstring extension
 	*
 	* @param    string $string A unicode string to reverse
-	* @return      string
+	* @return   string
 	*
 	*/
 	private function mb_strrev($string, $encoding = null)

@@ -5,11 +5,10 @@ use PHPUnit\Framework\TestCase;
 final class PathTest extends TestCase {
 
 	/**
-	* @testdox Path construct should fail without leading slash when not empty
+	* @testdox Path can be constructed without parameter
 	*/
-	public function testFailPathConstructWithoutLeadingSlash() {
-		$this->expectException(InvalidArgumentException::class);
-		new Path("asd");
+	public function testPathConstructNoParam() {
+		new Path();
 	}
 
 	/**
@@ -24,6 +23,14 @@ final class PathTest extends TestCase {
 	*/
 	public function testPathConstructEmpty() {
 		new Path("");
+	}
+
+	/**
+	* @testdox Path construct should fail without leading slash when not empty
+	*/
+	public function testFailPathConstructWithoutLeadingSlash() {
+		$this->expectException(InvalidArgumentException::class);
+		new Path("asd");
 	}
 
 	/**
@@ -103,24 +110,6 @@ final class PathTest extends TestCase {
 	}
 
 	/**
-	* @testdox CD command should fail when non-English characters exist
-	*/
-	public function testCdCannotIncludeNonEnglishCharacters() {
-		$this->expectException(InvalidArgumentException::class);
-		$path = new Path("/a/b/c/d");
-		$path->cd('ç');
-	}
-
-	/**
-	* @testdox CD command should fail when numbers exist
-	*/
-	public function testCdCannotIncludeNumbers() {
-		$this->expectException(InvalidArgumentException::class);
-		$path = new Path("/a/b/c/d");
-		$path->cd('/x/y2');
-	}
-
-	/**
 	* @testdox CD command can be absolute path
 	*/
 	public function testCdCanStartWithAbsolutePath() {
@@ -151,5 +140,23 @@ final class PathTest extends TestCase {
 		$path = new Path("/a/b/c/d");
 		$this->expectException(InvalidArgumentException::class);
 		$path->cd();
+	}
+
+	/**
+	* @testdox CD command should fail when non-English characters exist
+	*/
+	public function testCdCannotIncludeNonEnglishCharacters() {
+		$this->expectException(InvalidArgumentException::class);
+		$path = new Path("/a/b/c/d");
+		$path->cd('ç');
+	}
+
+	/**
+	* @testdox CD command should fail when numbers exist
+	*/
+	public function testCdCannotIncludeNumbers() {
+		$this->expectException(InvalidArgumentException::class);
+		$path = new Path("/a/b/c/d");
+		$path->cd('/x/y2');
 	}
 }
